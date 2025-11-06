@@ -1,0 +1,28 @@
+using System;
+namespace Program {
+    class Program {
+        static void Main(string[] args) {
+            
+            CultureInfo ci = new CultureInfo("pt-BR");
+            string nome1;
+            int idade1;
+            string nome2;
+            int idade2;
+            double mediaIdades;
+
+            Console.WriteLine("--- Dados da Primeira Pessoa ---");
+            Console.Write("Digite o nome da primeira pessoa: ");
+            nome1 = Console.ReadLine();
+            Console.Write("Digite a idade da primeira pessoa: ");
+            idade1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("\n--- Dados da Segunda Pessoa ---");
+            Console.Write("Digite o nome da segunda pessoa: ");
+            nome2 = Console.ReadLine();
+            Console.Write("Digite a idade da segunda pessoa: ");
+            idade2 = int.Parse(Console.ReadLine());
+            mediaIdades = (double)(idade1 + idade2) / 2.0;
+            Console.WriteLine("\nRESULTADO:");
+            Console.WriteLine($"A idade média entre {nome1} e {nome2} é de {mediaIdades.ToString("F1", ci)} anos.");
+}
+}
+}
