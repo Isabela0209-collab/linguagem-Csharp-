@@ -1,0 +1,35 @@
+using System;
+namespace Glicose{
+    class Program {
+        static void Main(string[] args){
+            CultureInfo ci = CultureInfo.InvariantCulture;
+            double glicose;
+            string classificacao;
+
+            Console.WriteLine("=== Classificação de Glicose ===");
+            Console.Write("Digite a quantidade de glicose no sangue (em mg/dl): ");
+            if (!double.TryParse(Console.ReadLine(), ci, out glicose))
+            {
+                Console.WriteLine("Erro: Valor inválido para a glicose.");
+                return;
+            }
+
+            if (glicose <= 100.0)
+            {
+                classificacao = "Normal";
+            }
+            else if (glicose <= 140.0)
+            {
+                classificacao = "Elevado";
+            }
+            else
+            {
+                classificacao = "Diabetes";
+            }
+
+            Console.WriteLine("\n--- Resultado ---");
+            Console.WriteLine($"Nível de Glicose: {glicose.ToString("F1", ci)} mg/dl");
+            Console.WriteLine($"Classificação: {classificacao}");
+}
+}
+}
