@@ -1,0 +1,30 @@
+using System;
+namespace IMC{
+    class Program{
+        static void Main(string[] args){
+            CultureInfo ci = CultureInfo.InvariantCulture; 
+            double peso, altura, imc;
+
+            Console.WriteLine("=== Cálculo de Índice de Massa Corporal (IMC) ===");
+            Console.Write("Digite o seu peso (em kg, ex: 75.5): ");
+            peso = double.Parse(Console.ReadLine(), ci);
+            Console.Write("Digite sua altura (em metros, ex: 1.75): ");
+
+            altura = double.Parse(Console.ReadLine(), ci);
+            imc = peso / Math.Pow(altura, 2);
+
+            Console.WriteLine("\n--- Seu IMC ---");
+            Console.WriteLine($"O seu IMC é: {imc.ToString("F2", ci)}");
+            
+            string classificacao = "";
+            if (imc < 18.5) classificacao = "Abaixo do peso";
+            else if (imc < 24.9) classificacao = "Peso normal";
+            else if (imc < 29.9) classificacao = "Sobrepeso";
+            else if (imc < 34.9) classificacao = "Obesidade Grau I";
+            else if (imc < 39.9) classificacao = "Obesidade Grau II (Severa)";
+            else classificacao = "Obesidade Grau III (Mórbida)";
+            
+            Console.WriteLine($"Classificação: {classificacao}");
+}
+}
+}
