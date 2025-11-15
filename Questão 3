@@ -1,0 +1,25 @@
+using System;
+namespace Troco{
+class Program{
+static void Main(string[] args){
+            
+            CultureInfo ci = CultureInfo.InvariantCulture; 
+            double precoUnitario, dinheiroRecebido, totalPagar, troco;
+            int quantidade;
+            Console.WriteLine("=== Cálculo de Troco ===");
+            Console.Write("Preço unitário do produto: R$ ");
+            precoUnitario = double.Parse(Console.ReadLine(), ci);
+            Console.Write("Quantidade comprada: ");
+            quantidade = int.Parse(Console.ReadLine());
+            Console.Write("Dinheiro recebido pelo cliente: R$ ");
+            dinheiroRecebido = double.Parse(Console.ReadLine(), ci);
+
+            totalPagar = precoUnitario * quantidade;
+            troco = dinheiroRecebido - totalPagar;
+
+            Console.WriteLine("\n--- Resultado ---");
+            Console.WriteLine($"VALOR A PAGAR: R$ {totalPagar.ToString("F2", ci)}");
+            Console.WriteLine($"TROCO: R$ {troco.ToString("F2", ci)}");
+}
+}
+}
