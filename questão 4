@@ -1,0 +1,40 @@
+using System;
+namespace NotasSESI{
+    class Program{
+        static void Main(string[] args){
+            CultureInfo ci = CultureInfo.InvariantCulture; 
+            double n1, n2, n3, n4, n5, n6, n7;
+            double media1, media2, notaFinal;
+            string conceito;
+
+            Console.WriteLine("=== Cálculo de Notas SESI (2º Bimestre) ===");
+            Console.Write("Digite a nota 1: "); n1 = double.Parse(Console.ReadLine(), ci);
+            Console.Write("Digite a nota 2: "); n2 = double.Parse(Console.ReadLine(), ci);
+            Console.Write("Digite a nota 3: "); n3 = double.Parse(Console.ReadLine(), ci);
+            Console.Write("Digite a nota 4: "); n4 = double.Parse(Console.ReadLine(), ci);
+            Console.Write("Digite a nota 5: "); n5 = double.Parse(Console.ReadLine(), ci);
+            Console.Write("Digite a nota 6: "); n6 = double.Parse(Console.ReadLine(), ci);
+            Console.Write("Digite a nota 7: "); n7 = double.Parse(Console.ReadLine(), ci);
+
+            media1 = (n1 + n2 + n3) / 3.0;
+            media2 = (n4 + n5 + n6) / 3.0;
+            notaFinal = (media1 + media2 + n7) / 3.0;
+
+            if (notaFinal >= 8.0)
+            {
+                conceito = "A";
+            }
+            else if (notaFinal >= 6.0)
+            {
+                conceito = "B";
+            }
+            else
+            {
+                conceito = "C";
+            }
+            Console.WriteLine("\n--- Resultados Finais ---");
+            Console.WriteLine($"NOTA FINAL: {notaFinal.ToString("F1", ci)}");
+            Console.WriteLine($"CONCEITO: {conceito}");
+}
+}
+}
