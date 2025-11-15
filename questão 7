@@ -1,0 +1,73 @@
+using System;
+namespace Passagem{
+    class Program{
+        static void Main(string[] args){
+            CultureInfo ci = CultureInfo.InvariantCulture;
+            const double VALOR_MORROS = 120.00;
+            const double VALOR_BARREIRINHAS = 200.00;
+            const double VALOR_BACABEIRA = 50.00;
+            const double VALOR_ROSARIO = 80.00;
+            const double DESCONTO_IDA_VOLTA = 0.10;
+
+            int codigoDestino;
+            char tipoViagem;
+            double valorBase = 0.0;
+            double valorTotal;
+            string nomeDestino = "";
+
+            Console.WriteLine("=== Cálculo de Passagem (Saída: São Luís) ===");
+            Console.WriteLine("Tabela de Destinos:");
+            Console.WriteLine("1 - Morros (R$ 120,00)");
+            Console.WriteLine("2 - Barreirinhas (R$ 200,00)");
+            Console.WriteLine("3 - Bacabeira (R$ 50,00)");
+            Console.WriteLine("4 - Rosário (R$ 80,00)");
+
+            Console.Write("\nDigite o código de destino (1 a 4): ");
+            if (!int.TryParse(Console.ReadLine(), out codigoDestino) || codigoDestino < 1 || codigoDestino > 4)
+            {
+                Console.WriteLine("Erro: Código de destino inválido.");
+                return;
+            }
+
+            Console.Write("A compra é de 'I'da ou 'V'ida e volta? (I/V): ");
+            if (!char.TryParse(Console.ReadLine().ToUpper(), out tipoViagem) || (tipoViagem != 'I' && tipoViagem != 'V'))
+            {
+                Console.WriteLine("Erro: Tipo de viagem inválido.");
+                return;
+            }
+
+            switch (codigoDestino)
+            {
+                case 1:
+                    valorBase = VALOR_MORROS;
+                    nomeDestino = "Morros";
+                    break;
+                case 2:
+                    valorBase = VALOR_BARREIRINHAS;
+                    nomeDestino = "Barreirinhas";
+                    break;
+                case 3:
+                    valorBase = VALOR_BACABEIRA;
+                    nomeDestino = "Bacabeira";
+                    break;
+                case 4:
+                    valorBase = VALOR_ROSARIO;
+                    nomeDestino = "Rosário";
+                    break;
+            }
+            
+            valorTotal = valorBase;
+            if (tipoViagem == 'V')
+            {
+                valorTotal *= 2; 
+                double desconto = valorTotal * DESCONTO_IDA_VOLTA;
+                valorTotal -= desconto;
+            }
+
+            Console.WriteLine("\n--- Resumo da Passagem ---");
+            Console.WriteLine($"Destino: {nomeDestino}");
+            Console.WriteLine($"Tipo de Viagem: {(tipoViagem == 'V' ? "Ida e Volta" : "Somente Ida")}");
+            Console.WriteLine($"Valor Total a Pagar: R$ {valorTotal.ToString("F2", ci)}");
+}
+}
+}
