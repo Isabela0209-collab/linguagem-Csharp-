@@ -1,0 +1,30 @@
+using System;
+namespace Operadora{
+    class Program{
+        static void Main(string[] args){
+            CultureInfo ci = CultureInfo.InvariantCulture; 
+            const double VALOR_PLANO_BASICO = 50.00;
+            const int MINUTOS_FRANQUIA = 100;
+            const double VALOR_POR_MINUTO_EXTRA = 2.00;
+            int minutosConsumidos;
+            double valorAPagar;
+
+            Console.WriteLine("=== Cálculo de Conta de Telefone ===");
+            Console.Write("Digite a quantidade de minutos consumidos no mês: ");
+
+            minutosConsumidos = int.Parse(Console.ReadLine());
+            valorAPagar = VALOR_PLANO_BASICO;
+
+            if (minutosConsumidos > MINUTOS_FRANQUIA)
+            {
+                int minutosExcedentes = minutosConsumidos - MINUTOS_FRANQUIA;
+                
+                valorAPagar += minutosExcedentes * VALOR_POR_MINUTO_EXTRA;
+            }
+
+            Console.WriteLine("\n--- Resumo da Conta ---");
+            Console.WriteLine($"Minutos Consumidos: {minutosConsumidos}");
+            Console.WriteLine($"Valor total a pagar: R$ {valorAPagar.ToString("F2", ci)}");
+}
+}
+}
